@@ -1,5 +1,6 @@
 var clear = document.getElementById('clear');
 var display = document.getElementById('display');
+var plus = document.getElementById('plus');
 var $0 = document.getElementById('0');
 var $1 = document.getElementById('1');
 var $2 = document.getElementById('2');
@@ -16,19 +17,17 @@ var num1;
 var operator;
 var num2;
 
-var expression = {
-  num1: undefined,
-  operator: undefined,
-  num2: undefined
-};
-
-
 function updateDisplay() {
-
+  display.innerHTML = expression;
 }
 
 clear.addEventListener('click', function() {
 
+});
+
+plus.addEventListener('click', function() {
+  expression += "+";
+  updateDisplay();
 });
 
 $0.addEventListener('click', function() {
@@ -36,7 +35,8 @@ $0.addEventListener('click', function() {
 });
 
 $1.addEventListener('click', function() {
-
+  expression += 1;
+  updateDisplay();
 });
 
 $2.addEventListener('click', function() {
