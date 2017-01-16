@@ -1,8 +1,10 @@
 body {
-  font-size: 16px;
+  font-size: 18px;
+  font-family: 'Source Code Pro', monospace;
 }
 
 .wrapper {
+  margin: 2em auto;
   display: flex;
   padding: 1em;
   flex-wrap: wrap;
@@ -26,6 +28,10 @@ body {
 
 .button:hover {
   background-color: #ddd;
+}
+
+.button:active {
+  background-color: #f7f7f7;
 }
 
 #display {

@@ -28,7 +28,7 @@ function updateDisplay() {
 
 equals.addEventListener('click', function() {
   expression = eval(expression);
-  display.innerHTML = expression;
+  display.innerHTML = expression.toString();
   lastInputType = "equals";
 });
 
@@ -38,7 +38,6 @@ clear.addEventListener('click', function() {
   updateDisplay();
 });
 
-// create operator button
 function buttonOperator(btn, operator) {
   btn.addEventListener('click', function() {
     if (lastInputType != "operator") {
@@ -49,12 +48,6 @@ function buttonOperator(btn, operator) {
   });
 }
 
-buttonOperator(plus, "+");
-buttonOperator(minus, "-");
-buttonOperator(divide, "/");
-buttonOperator(multiply, "*");
-
-// create number button
 function buttonNum(btn, num) {
   btn.addEventListener('click', function() {
     if (lastInputType == "operator" || lastInputType == Number && expression != "0") {
@@ -77,9 +70,12 @@ decimal.addEventListener('click', function() {
     lastTypeDecimal = true;
     updateDisplay();
   }
-
 });
 
+buttonOperator(plus, "+");
+buttonOperator(minus, "-");
+buttonOperator(divide, "/");
+buttonOperator(multiply, "*");
 buttonNum($0, "0");
 buttonNum($1, "1");
 buttonNum($2, "2");
