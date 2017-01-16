@@ -1,6 +1,11 @@
 var clear = document.getElementById('clear');
 var display = document.getElementById('display');
 var plus = document.getElementById('plus');
+var minus = document.getElementById('minus');
+var divide = document.getElementById('divide');
+var multiply = document.getElementById('multiply');
+var decimal = document.getElementById('decimal');
+
 var equals = document.getElementById('equals');
 var $0 = document.getElementById('0');
 var $1 = document.getElementById('1');
@@ -15,6 +20,7 @@ var $9 = document.getElementById('9');
 
 var expression = "0";
 var lastInputType;
+var lastTypeDecimal = false;
 
 function updateDisplay() {
   display.innerHTML = expression;
@@ -32,30 +38,47 @@ clear.addEventListener('click', function() {
   updateDisplay();
 });
 
-plus.addEventListener('click', function() {
-  if (lastInputType != "operator") {
-    lastInputType = "operator"
-    expression += "+";
-    updateDisplay();
-  }
-});
+// create operator button
+function buttonOperator(btn, operator) {
+  btn.addEventListener('click', function() {
+    if (lastInputType != "operator") {
+      lastInputType = "operator"
+      expression += operator;
+      updateDisplay();
+    }
+  });
+}
 
-$0.addEventListener('click', function() {
-
-});
+buttonOperator(plus, "+");
+buttonOperator(minus, "-");
+buttonOperator(divide, "/");
+buttonOperator(multiply, "*");
 
 // create number button
 function buttonNum(btn, num) {
   btn.addEventListener('click', function() {
-    if (lastInputType == "operator" || lastInputType == Number & expression != "0") {
+    if (lastInputType == "operator" || lastInputType == Number && expression != "0") {
       expression += num;
     } else {
       expression = num;
     }
     lastInputType = Number;
+    lastTypeDecimal = false;
     updateDisplay();
   });
 }
+
+decimal.addEventListener('click', function() {
+  if (!lastTypeDecimal) {
+    if (lastInputType == "operator" || lastInputType == Number || expression == "0") {
+      expression += ".";
+    }
+    lastInputType = Number;
+    lastTypeDecimal = true;
+    updateDisplay();
+  }
+
+});
 
 buttonNum($0, "0");
 buttonNum($1, "1");
@@ -67,35 +90,3 @@ buttonNum($6, "6");
 buttonNum($7, "7");
 buttonNum($8, "8");
 buttonNum($9, "9");
-
-$2.addEventListener('click', function() {
-
-});
-
-$3.addEventListener('click', function() {
-
-});
-
-$4.addEventListener('click', function() {
-
-});
-
-$5.addEventListener('click', function() {
-
-});
-
-$6.addEventListener('click', function() {
-
-});
-
-$7.addEventListener('click', function() {
-
-});
-
-$8.addEventListener('click', function() {
-
-});
-
-$9.addEventListener('click', function() {
-
-});
