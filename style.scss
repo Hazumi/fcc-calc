@@ -1,6 +1,12 @@
+$font-stack: 'Source Code Pro', monospace;
+$grey1: #333;
+$grey2: #ddd;
+$grey3: #eee;
+$grey4: #f7f7f7;
+
 body {
+  font: 100% $font-stack;
   font-size: 18px;
-  font-family: 'Source Code Pro', monospace;
 }
 
 .wrapper {
@@ -8,30 +14,28 @@ body {
   display: flex;
   padding: 1em;
   flex-wrap: wrap;
-  border: 2px solid #333;
+  border: 2px solid $grey1;
   border-radius: 10px;
   justify-content: space-between;
   width: 300px;
 }
 
 .button {
-  margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px;
   border-radius: 10px;
   width: 55px;
   height: 55px;
-  background-color: #eee;
+  background-color: $grey3;
   cursor: pointer;
-}
-
-.button:hover {
-  background-color: #ddd;
-}
-
-.button:active {
-  background-color: #f7f7f7;
+  &:hover {
+    background-color: $grey2;
+  }
+  &:active {
+    background-color: $grey4;
+  }
 }
 
 #display {
@@ -41,6 +45,6 @@ body {
   margin: 10px;
   width: 200px;
   height: 55px;
-  background-color: #f7f7f7;
+  background-color: $grey4;
   border-radius: 10px;
 }
